@@ -6,7 +6,7 @@ public class CpfValidator {
 
     public static void validate(String cpf) {
         if (cpf == null || !cpf.matches("\\d{11}")) {
-            throw new InvalidCpfException(cpf);
+            throw new InvalidCpfException("CPF em formato inválido: " + cpf);
         }
     }
 }

@@ -1,11 +1,11 @@
-package br.com.solution.cepbackend.application.dto.request;
+package br.com.solution.cepbackend.application.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDateTime;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record UsuarioCadastroRequest(
+public record UserRegisterResponse(
         String nome,
         String cpf,
         String cep,
@@ -13,6 +13,6 @@ public record UsuarioCadastroRequest(
         String bairro,
         String cidade,
         String estado,
-        LocalDateTime data_atualizacao
+        LocalDateTime data_criacao
 ) {
 }

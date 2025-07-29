@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "usuario")
-public class UsuarioEntity {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +33,7 @@ public class UsuarioEntity {
     @Column(nullable = false)
     private String estado;
 
-    @Column(updatable = false)
+    @Column(name = "data_criacao", updatable = false)
     private LocalDateTime dataCriacao = LocalDateTime.now();
 
     @Column(name = "data_atualizacao")
