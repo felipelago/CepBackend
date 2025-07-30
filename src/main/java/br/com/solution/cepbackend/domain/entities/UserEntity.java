@@ -37,7 +37,7 @@ public class UserEntity {
     private LocalDateTime dataCriacao = LocalDateTime.now();
 
     @Column(name = "data_atualizacao")
-    private LocalDateTime dataAtualizacao;
+    private LocalDateTime dataAtualizacao = LocalDateTime.now();
 
     //Getters and Setters
     public Long getId() {

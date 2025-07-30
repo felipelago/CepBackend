@@ -1,12 +1,10 @@
 package br.com.solution.cepbackend.application.dto.request;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public record UserRegisterRequest(
+public record UserUpdateRequest(
 
         @NotBlank(message = "O nome é obrigatório")
         @Size(max = 100, message = "O nome deve ter no máximo 100 caracteres")

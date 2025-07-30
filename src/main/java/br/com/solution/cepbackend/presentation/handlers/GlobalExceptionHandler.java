@@ -1,9 +1,6 @@
 package br.com.solution.cepbackend.presentation.handlers;
 
-import br.com.solution.cepbackend.domain.exceptions.BusinessException;
-import br.com.solution.cepbackend.domain.exceptions.DuplicateResourceException;
-import br.com.solution.cepbackend.domain.exceptions.InvalidCpfException;
-import br.com.solution.cepbackend.domain.exceptions.ResourceNotFoundException;
+import br.com.solution.cepbackend.domain.exceptions.*;
 import br.com.solution.cepbackend.domain.exceptions.dto.ApiErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +56,16 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(InvalidCpfException.class)
     public ResponseEntity<ApiErrorResponse> invalidCpfException(InvalidCpfException ex) {
+        ApiErrorResponse error = new ApiErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                ex.getMessage(),
+                LocalDateTime.now()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+
+    @ExceptionHandler(InvalidCepException.class)
+    public ResponseEntity<ApiErrorResponse> invalidCepException(InvalidCepException ex) {
         ApiErrorResponse error = new ApiErrorResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage(),

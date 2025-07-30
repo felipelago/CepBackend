@@ -1,9 +1,11 @@
 package br.com.solution.cepbackend.presentation.controllers;
 
 import br.com.solution.cepbackend.application.dto.request.UserRegisterRequest;
+import br.com.solution.cepbackend.application.dto.request.UserUpdateRequest;
 import br.com.solution.cepbackend.application.dto.response.AdressResponse;
 import br.com.solution.cepbackend.application.dto.response.UserRegisterResponse;
 import br.com.solution.cepbackend.application.dto.response.UserResponse;
+import br.com.solution.cepbackend.application.dto.response.UserUpdateResponse;
 import br.com.solution.cepbackend.application.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -36,9 +38,14 @@ public class UserController {
         return ResponseEntity.ok(service.listAdresses());
     }
 
-    @DeleteMapping("/v1/delete-user/{id}")
+    @DeleteMapping("/v1/deletar-usuario/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         service.deleteUser(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/v1/update-usuario/{id}")
+    public ResponseEntity<UserUpdateResponse> updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateRequest request) {
+        return ResponseEntity.ok(service.updateUser(id, request));
     }
 }
