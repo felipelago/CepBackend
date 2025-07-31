@@ -2,6 +2,7 @@ package br.com.solution.cepbackend.presentation.handlers;
 
 import br.com.solution.cepbackend.domain.exceptions.*;
 import br.com.solution.cepbackend.domain.exceptions.dto.ApiErrorResponse;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -69,6 +70,16 @@ public class GlobalExceptionHandler {
         ApiErrorResponse error = new ApiErrorResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage(),
+                LocalDateTime.now()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+
+    @ExceptionHandler(JsonMappingException .class)
+    public ResponseEntity<ApiErrorResponse> jsonMappingException (JsonMappingException ex) {
+        ApiErrorResponse error = new ApiErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                "Erro de mapeamento de JSON: " + ex.getMessage(),
                 LocalDateTime.now()
         );
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);

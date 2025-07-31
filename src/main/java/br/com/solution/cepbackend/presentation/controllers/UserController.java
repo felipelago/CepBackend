@@ -7,6 +7,7 @@ import br.com.solution.cepbackend.application.dto.response.UserRegisterResponse;
 import br.com.solution.cepbackend.application.dto.response.UserResponse;
 import br.com.solution.cepbackend.application.dto.response.UserUpdateResponse;
 import br.com.solution.cepbackend.application.services.UserService;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +46,7 @@ public class UserController {
     }
 
     @PutMapping("/v1/update-usuario/{id}")
-    public ResponseEntity<UserUpdateResponse> updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateRequest request) {
+    public ResponseEntity<UserUpdateResponse> updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateRequest request) throws JsonMappingException {
         return ResponseEntity.ok(service.updateUser(id, request));
     }
 }
