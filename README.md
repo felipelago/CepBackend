@@ -28,15 +28,6 @@
 └── presentation     # Controllers e handlers
 </pre>
 
-<h4>Vantagens desta Abordagem:</h4>
-
-<ul>
-  <li><strong>Service puro</strong>: Fácil de testar, sem dependências de infraestrutura</li>
-  <li><strong>Adapter isolado</strong>: Mudanças no banco não afetam a lógica</li>
-  <li><strong>Flexibilidade</strong>: Pode trocar implementações facilmente</li>
-  <li><strong>Clareza</strong>: Fica claro onde está cada responsabilidade</li>
-</ul>
-
 <h2>🚀 Como Executar</h2>
 
 <h3>Pré-requisitos</h3>
