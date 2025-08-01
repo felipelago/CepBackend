@@ -9,13 +9,17 @@ import br.com.solution.cepbackend.application.dto.response.UserUpdateResponse;
 import br.com.solution.cepbackend.application.services.UserService;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import jakarta.validation.Valid;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping(
+        path = "/api/v1/usuarios",
+        produces = MediaType.APPLICATION_JSON_VALUE
+)
 public class UserController {
 
     private final UserService service;
@@ -24,28 +28,31 @@ public class UserController {
         this.service = service;
     }
 
-    @PostMapping("/v1/cadastrar")
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserRegisterResponse> registerUser(@Valid @RequestBody UserRegisterRequest request) {
         return ResponseEntity.ok(service.registerUser(request));
     }
 
-    @GetMapping("/v1/listar-usuarios")
+    @GetMapping("/listar-usuarios")
     public ResponseEntity<List<UserResponse>> listUsers() {
         return ResponseEntity.ok(service.listUsers());
     }
 
-    @GetMapping("/v1/listar-enderecos")
+    @GetMapping("/listar-enderecos")
     public ResponseEntity<List<AdressResponse>> listAdresses() {
         return ResponseEntity.ok(service.listAdresses());
     }
 
-    @DeleteMapping("/v1/deletar-usuario/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         service.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/v1/update-usuario/{id}")
+    @PutMapping(
+            path = "/{id}",
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
     public ResponseEntity<UserUpdateResponse> updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateRequest request) throws JsonMappingException {
         return ResponseEntity.ok(service.updateUser(id, request));
     }
