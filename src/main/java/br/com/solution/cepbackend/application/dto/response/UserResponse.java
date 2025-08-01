@@ -9,6 +9,7 @@ public record UserResponse(
         String cep,
         String logradouro,
         String bairro,
+        String cidade,
         String estado,
         LocalDateTime dataCriacao
 ) {

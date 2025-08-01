@@ -49,7 +49,7 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping(
+    @PatchMapping(
             path = "/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE
     )

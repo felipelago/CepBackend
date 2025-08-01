@@ -24,6 +24,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long>, UserRep
                     u.cep,
                     u.logradouro,
                     u.bairro,
+                    u.cidade,
                     u.estado,
                     u.dataCriacao
                 )

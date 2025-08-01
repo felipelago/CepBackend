@@ -19,9 +19,16 @@ public record UserRegisterRequest(
         @Pattern(regexp = "\\d{8}", message = "O CEP deve conter exatamente 8 dígitos numéricos, sem hífen")
         String cep,
 
+        @NotBlank(message = "Logradouro é obrigatório")
         String logradouro,
+
+        @NotBlank(message = "Bairro é obrigatório")
         String bairro,
+
+        @NotBlank(message = "Cidade é obrigatório")
         String cidade,
+
+        @NotBlank(message = "Estado é obrigatório")
         String estado
 ) {
 }
